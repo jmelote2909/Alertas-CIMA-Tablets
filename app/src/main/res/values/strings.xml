@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Alertas Cima</string>
+    <string name="accessibility_service_description">Detecta alertas del sistema Cima para mostrar una ventana flotante.</string>
+    <string name="overlay_text">ALERTA: Sistema Cima Activo</string>
+    <string name="splash_title">ALERTA CIMAS Y CABLEADOS</string>
+    <string name="splash_loading">CARGANDO...</string>
+    <string name="btn_connect">CONECTAR</string>
+    <string name="connected_devices">CIMAS CONECTADOS: %1$d</string>
+
+    <string-array name="history_filters">
+        <item>Todas</item>
+        <item>Título</item>
+        <item>Mensaje</item>
+        <item>Fecha</item>
+    </string-array>
+</resources>

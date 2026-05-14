@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand -->
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="accent">#03A9F4</color>
+
+    <!-- Backgrounds -->
+    <color name="bg_dark">#0D1117</color>
+    <color name="bg_card">#161B22</color>
+    <color name="bg_card_dark">#0A0D12</color>
+    <color name="glass_white">#22FFFFFF</color>
+
+    <!-- Priority Colors (All Blue now) -->
+    <color name="priority_low">#42A5F5</color>
+    <color name="priority_medium">#2196F3</color>
+    <color name="priority_high">#1E88E5</color>
+    <color name="priority_critical">#1565C0</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#9E9E9E</color>
+</resources>

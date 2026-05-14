@@ -1,0 +1,17 @@
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\network\AlertScheduleReceiver.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\data\AlertDao.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\network\BootReceiver.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\network\WakeUpHelper.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\network\LanListenerService.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\data\AppDatabase.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\MainService.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\ui\ConnectActivity.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\service\OverlayService.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\data\AlertEntity.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\model\AlertModel.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\network\LanNetworkManager.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\viewmodel\AdminViewModel.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\service\MyFirebaseMessagingService.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\ui\AdminActivity.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\ui\UserActivity.kt
+C:\Users\Usuario\Desktop\PROYECTOS INDIVIDUALES\alertasCima\app\src\main\java\com\example\overlayapp\ui\LoginActivity.kt
