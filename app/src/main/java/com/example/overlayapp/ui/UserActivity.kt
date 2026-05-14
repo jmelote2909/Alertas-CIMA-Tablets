@@ -23,6 +23,7 @@ import com.example.overlayapp.network.LanListenerService
 import com.example.overlayapp.service.OverlayService
 import com.example.overlayapp.data.AppDatabase
 import com.example.overlayapp.data.AlertEntity
+import com.example.overlayapp.api.ApiClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,12 +51,10 @@ class UserActivity : AppCompatActivity() {
         }
     }
 
-    private val allAlerts = mutableListOf<AlertEntry>()
+    private val allAlerts = mutableListOf<AlertEntity>()
     private var visibleCount = 5
     private var currentFilter = "Todas"
     private var currentSearch = ""
-
-    data class AlertEntry(val title: String, val message: String, val time: String, val date: String)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -157,15 +156,26 @@ class UserActivity : AppCompatActivity() {
     private fun loadHistoryFromDb() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val dbAlerts = AppDatabase.getDatabase(this@UserActivity).alertDao().getAllAlertsList()
+                // 1. Intentar cargar desde el Servidor Central (Postgres)
+                val centralAlerts = ApiClient.service.getAlerts()
                 withContext(Dispatchers.Main) {
                     allAlerts.clear()
-                    allAlerts.addAll(dbAlerts.map { AlertEntry(it.title, it.message, it.time, it.date) })
+                    allAlerts.addAll(centralAlerts)
                     updateHistoryDisplay()
                 }
+                Log.d("UserActivity", "Historial sincronizado desde Postgres")
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Log.e("UserActivity", "Error cargando historial", e)
+                Log.e("UserActivity", "Servidor central no alcanzable, usando local", e)
+                // 2. Fallback: Cargar desde la base de datos local (Room)
+                try {
+                    val localAlerts = AppDatabase.getDatabase(this@UserActivity).alertDao().getAllAlertsList()
+                    withContext(Dispatchers.Main) {
+                        allAlerts.clear()
+                        allAlerts.addAll(localAlerts)
+                        updateHistoryDisplay()
+                    }
+                } catch (dbEx: Exception) {
+                    Log.e("UserActivity", "Error crítico cargando historial", dbEx)
                 }
             }
         }

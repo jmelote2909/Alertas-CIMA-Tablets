@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.example.overlayapp.R
 import android.app.PendingIntent
+import com.example.overlayapp.api.ApiClient
 import com.example.overlayapp.model.AlertPriority
 import com.example.overlayapp.service.OverlayService
 import android.os.Vibrator
@@ -302,8 +303,18 @@ class LanListenerService : Service() {
                             time = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault()).format(java.util.Date()),
                             date = java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(java.util.Date())
                         )
+                        // Local Save
                         AppDatabase.getDatabase(this@LanListenerService).alertDao().insertAlert(alertEntity)
-                        Log.d(TAG, "Alerta guardada en base de datos")
+                        
+                        // Central Server Save (Postgres)
+                        try {
+                            ApiClient.service.sendAlert(alertEntity)
+                            Log.d(TAG, "Alerta sincronizada con servidor central")
+                        } catch (e: Exception) {
+                            Log.e(TAG, "Fallo al sincronizar con servidor central (¿Está encendido?)", e)
+                        }
+                        
+                        Log.d(TAG, "Alerta guardada en base de datos local")
                     } catch (e: Exception) {
                         Log.e(TAG, "Error guardando en BD", e)
                     }
