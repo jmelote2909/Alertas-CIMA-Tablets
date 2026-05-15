@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="history_filters">
+        <item>Todas</item>
+        <item>Título</item>
+        <item>Mensaje</item>
+        <item>Fecha</item>
+    </string-array>
+    <color name="accent">#03A9F4</color>
+    <color name="bg_card">#161B22</color>
+    <color name="bg_card_dark">#0A0D12</color>
+    <color name="bg_dark">#0D1117</color>
+    <color name="glass_white">#22FFFFFF</color>
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="priority_critical">#1565C0</color>
+    <color name="priority_high">#1E88E5</color>
+    <color name="priority_low">#42A5F5</color>
+    <color name="priority_medium">#2196F3</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#9E9E9E</color>
+    <string name="accessibility_service_description">Detecta alertas del sistema Cima para mostrar una ventana flotante.</string>
+    <string name="app_name">Alertas Cima</string>
+    <string name="btn_connect">CONECTAR</string>
+    <string name="connected_devices">CIMAS CONECTADOS: %1$d</string>
+    <string name="gcm_defaultSenderId" translatable="false">687437347478</string>
+    <string name="google_api_key" translatable="false">AIzaSyDpoSgAU-4f9stUWIpdUJtZ72LZabUFFE8</string>
+    <string name="google_app_id" translatable="false">1:687437347478:android:d3be25494d2519a5e720b7</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDpoSgAU-4f9stUWIpdUJtZ72LZabUFFE8</string>
+    <string name="google_storage_bucket" translatable="false">prueba1-174f1.firebasestorage.app</string>
+    <string name="overlay_text">ALERTA: Sistema Cima Activo</string>
+    <string name="project_id" translatable="false">prueba1-174f1</string>
+    <string name="splash_loading">CARGANDO...</string>
+    <string name="splash_title">ALERTA CIMAS Y CABLEADOS</string>
+    <style name="CircleImage">
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="OutlineButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">16dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="strokeColor">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">16dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Theme.OverlayApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent</item>
+        <item name="colorOnSecondary">@color/bg_dark</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        
+        <item name="colorControlActivated">@color/primary</item>
+        <item name="colorControlHighlight">@color/primary</item>
+    </style>
+</resources>

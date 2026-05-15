@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/app_logo"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/CircleImage"
+                android:layout_marginEnd="16dp"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="1dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Alertas Cima"
+                android:textColor="@color/text_primary"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="v1.1"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sistema de alertas críticas en tiempo real"
+            android:textColor="@color/accent"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvConnectedDevices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CIMAS CONECTADOS: --"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="32dp" />
+
+        <!-- STATUS CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/bg_card"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado del Sistema"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🟢 Servicio"
+                        android:textColor="@color/primary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvPermissionStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comprobando..."
+                        android:textColor="@color/text_secondary"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnGrantPermissions"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="🔓  CONFIGURAR PERMISOS"
+                    android:textSize="14sp"
+                    android:textColor="@color/accent"
+                    android:layout_marginTop="8dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- MODO ADMIN CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/bg_card"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Panel de Control"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Envía alertas en tiempo real a todos los dispositivos registrados en el sistema Cima."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="20dp" />
+
+                <Button
+                    android:id="@+id/btnEnterAdmin"
+                    style="@style/PrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="ABRIR PANEL ADMIN"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="16dp" />
+
+                <Button
+                    android:id="@+id/btnModeUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="MODO USUARIO"
+                    android:textSize="16sp"
+                    android:textColor="@color/accent"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Historial de Alertas"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/accent"
+                android:entries="@array/history_filters" />
+        </LinearLayout>
+
+        <!-- SEARCH BAR -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@color/bg_card_dark"
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Buscar alerta..."
+                android:textColorHint="@color/text_secondary"
+                android:textColor="@color/text_primary"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:background="@android:color/transparent"
+                android:textSize="14sp"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:drawablePadding="12dp"
+                android:drawableTint="@color/text_secondary"
+                android:inputType="text"
+                android:imeOptions="actionSearch" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/bg_card"
+            android:layout_marginBottom="32dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/layoutHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvEmptyHistory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No hay alertas recientes"
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center"
+                        android:padding="20dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnLoadMore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="VER MÁS ABAJO"
+                    android:textColor="@color/primary"
+                    android:visibility="gone"
+                    style="@style/Widget.MaterialComponents.Button.TextButton" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- INFO FOOTER -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📱 Alertas Cima System  •  v1.1.0"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,26 +1,18 @@
 [
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-mergeDebugResources-45:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\layout\\activity_login.xml"
-    },
-    {
         "merged": "com.example.overlayapp-mergeDebugResources-45:/layout/activity_admin.xml",
         "source": "com.example.overlayapp-main-48:/layout/activity_admin.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-mergeDebugResources-45:\\layout\\activity_user.xml",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\layout\\activity_user.xml"
+        "merged": "com.example.overlayapp-mergeDebugResources-45:/layout/activity_connect.xml",
+        "source": "com.example.overlayapp-main-48:/layout/activity_connect.xml"
+    },
+    {
+        "merged": "com.example.overlayapp-mergeDebugResources-45:/layout/activity_user.xml",
+        "source": "com.example.overlayapp-main-48:/layout/activity_user.xml"
     },
     {
         "merged": "com.example.overlayapp-mergeDebugResources-45:/layout/activity_login.xml",
         "source": "com.example.overlayapp-main-48:/layout/activity_login.xml"
-    },
-    {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-mergeDebugResources-45:\\layout\\activity_admin.xml",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\layout\\activity_admin.xml"
-    },
-    {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-mergeDebugResources-45:\\layout\\activity_connect.xml",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\layout\\activity_connect.xml"
     }
 ]

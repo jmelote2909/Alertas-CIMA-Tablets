@@ -4,7 +4,7 @@
             "outputFile": "com.example.overlayapp-mergeDebugResources-44:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\8.13\\transforms\\4334be3572e884b6af78828a7942f05d\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\practicas.e5\\.gradle\\caches\\8.13\\transforms\\4334be3572e884b6af78828a7942f05d\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

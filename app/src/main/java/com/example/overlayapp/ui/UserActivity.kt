@@ -225,7 +225,7 @@ class UserActivity : AppCompatActivity() {
         }
     }
 
-    private fun renderAlertItem(alert: AlertEntry) {
+    private fun renderAlertItem(alert: AlertEntity) {
         val itemLayout = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(16, 24, 16, 24)

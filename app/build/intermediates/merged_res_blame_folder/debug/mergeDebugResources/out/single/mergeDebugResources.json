@@ -1,66 +1,58 @@
 [
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.example.overlayapp-debug-46:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.overlayapp-main-48:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\layout\\activity_login.xml"
+        "merged": "com.example.overlayapp-debug-46:/xml_accessibility_service_config.xml.flat",
+        "source": "com.example.overlayapp-main-48:/xml/accessibility_service_config.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\xml_accessibility_service_config.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\xml\\accessibility_service_config.xml"
+        "merged": "com.example.overlayapp-debug-46:/drawable_spinner_bg.xml.flat",
+        "source": "com.example.overlayapp-main-48:/drawable/spinner_bg.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\layout_activity_admin.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\layout\\activity_admin.xml"
+        "merged": "com.example.overlayapp-debug-46:/layout_activity_connect.xml.flat",
+        "source": "com.example.overlayapp-main-48:/layout/activity_connect.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\drawable_app_logo.jpg.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\drawable\\app_logo.jpg"
+        "merged": "com.example.overlayapp-debug-46:/layout_activity_user.xml.flat",
+        "source": "com.example.overlayapp-main-48:/layout/activity_user.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\layout_activity_connect.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\layout\\activity_connect.xml"
+        "merged": "com.example.overlayapp-debug-46:/drawable_app_logo.jpg.flat",
+        "source": "com.example.overlayapp-main-48:/drawable/app_logo.jpg"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "com.example.overlayapp-debug-46:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.overlayapp-main-48:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
         "merged": "com.example.overlayapp-debug-46:/layout_activity_admin.xml.flat",
         "source": "com.example.overlayapp-main-48:/layout/activity_admin.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "com.example.overlayapp-debug-46:/mipmap_ic_launcher_round.xml.flat",
+        "source": "com.example.overlayapp-main-48:/mipmap/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\mipmap_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\mipmap\\ic_launcher.xml"
+        "merged": "com.example.overlayapp-debug-46:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.overlayapp-main-48:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\drawable\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\drawable_badge_bg.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\drawable\\badge_bg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\drawable_spinner_bg.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\drawable\\spinner_bg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\mipmap_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\mipmap\\ic_launcher_round.xml"
+        "merged": "com.example.overlayapp-debug-46:/mipmap_ic_launcher.xml.flat",
+        "source": "com.example.overlayapp-main-48:/mipmap/ic_launcher.xml"
     },
     {
         "merged": "com.example.overlayapp-debug-46:/layout_activity_login.xml.flat",
         "source": "com.example.overlayapp-main-48:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-debug-46:\\layout_activity_user.xml.flat",
-        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.13\\com.example.overlayapp-main-48:\\layout\\activity_user.xml"
+        "merged": "com.example.overlayapp-debug-46:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.overlayapp-main-48:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.overlayapp-debug-46:/drawable_badge_bg.xml.flat",
+        "source": "com.example.overlayapp-main-48:/drawable/badge_bg.xml"
     }
 ]
