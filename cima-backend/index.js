@@ -8,7 +8,7 @@ app.use(cors());
 
 // CONFIGURACIÓN DE TU POSTGRES
 const pool = new Pool({
-  user: 'svr-bd',
+  user: 'svralertas',
   host: '192.168.10.203',
   database: 'alertas_db',
   password: 'Cima1100@',
