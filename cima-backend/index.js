@@ -8,10 +8,10 @@ app.use(cors());
 
 // CONFIGURACIÓN DE TU POSTGRES
 const pool = new Pool({
-  user: 'tu_usuario',
-  host: 'localhost',
-  database: 'tu_base_de_datos',
-  password: 'tu_password',
+  user: 'svr-bd',
+  host: '192.168.10.203',
+  database: 'alertas_db',
+  password: 'Cima1100@',
   port: 5432,
 });
 
