@@ -27,11 +27,11 @@ app.get('/alerts', async (req, res) => {
 
 // Guardar una nueva alerta
 app.post('/alerts', async (req, res) => {
-  const { title, message, priority, time, date } = req.body;
+  const { title, message, time, date } = req.body;
   try {
     const result = await pool.query(
-      'INSERT INTO alerts (title, message, priority, time, date) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [title, message, priority, time, date]
+      'INSERT INTO alerts (title, message, time, date) VALUES ($1, $2, $3, $4) RETURNING *',
+      [title, message, time, date]
     );
     res.json(result.rows[0]);
   } catch (err) {
