@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alertas CIMA – Panel Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0b0f1a;
+      --surface:   #111827;
+      --card:      #1a2235;
+      --border:    #1e2d45;
+      --accent:    #2196F3;
+      --accent2:   #0d47a1;
+      --green:     #4caf50;
+      --red:       #ef5350;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --radius:    14px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 4px 24px rgba(33,150,243,.35);
+    }
+    header .logo { font-size: 28px; }
+    header h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: .5px; }
+    header span { font-size: .85rem; opacity: .75; }
+    .live-dot {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .8rem;
+      color: #a5f3a5;
+    }
+    .live-dot::before {
+      content: '';
+      width: 10px; height: 10px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .4; transform: scale(1.3); }
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 780px) {
+      .container { grid-template-columns: 1fr; }
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── FORM ── */
+    label {
+      display: block;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: .95rem;
+      transition: border .2s;
+      outline: none;
+      margin-bottom: 18px;
+    }
+    input[type="text"]:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(33,150,243,.15);
+    }
+    textarea { resize: vertical; min-height: 100px; }
+
+    .btn-send {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      letter-spacing: .5px;
+      transition: transform .15s, box-shadow .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-send:hover  { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(33,150,243,.4); }
+    .btn-send:active { transform: translateY(0); }
+    .btn-send:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .3s, transform .3s;
+      z-index: 999;
+      pointer-events: none;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+    #toast.ok  { background: #1b4332; color: #6ee7b7; border: 1px solid #065f46; }
+    #toast.err { background: #3b0b0b; color: #fca5a5; border: 1px solid #7f1d1d; }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      flex: 1;
+      min-width: 80px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .stat-box .num { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+    .stat-box .lbl { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-top: 2px; }
+
+    /* ── ALERT LIST ── */
+    #alert-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .alert-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 16px 18px;
+      animation: slideIn .3s ease;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(16px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .alert-item .ah { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .alert-item .title { font-weight: 600; font-size: .95rem; }
+    .alert-item .meta  { font-size: .75rem; color: var(--muted); white-space: nowrap; }
+    .alert-item .msg   { color: #93c5fd; font-size: .88rem; margin-top: 6px; line-height: 1.5; }
+
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 40px 0;
+      font-size: .9rem;
+    }
+    .empty .icon { font-size: 2.5rem; margin-bottom: 8px; }
+
+    /* ── SCROLL ── */
+    #history-col { overflow-y: auto; max-height: 80vh; }
+    #alert-list::-webkit-scrollbar { width: 6px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🔔</div>
+  <div>
+    <h1>Panel de Alertas CIMA</h1>
+    <span>Sistema centralizado de notificaciones</span>
+  </div>
+  <div class="live-dot" id="live-status">Conectado</div>
+</header>
+
+<div class="container">
+
+  <!-- ── FORMULARIO ── -->
+  <div>
+    <div class="card">
+      <h2>📢 Enviar Alerta</h2>
+
+      <label for="inp-title">Título</label>
+      <input type="text" id="inp-title" placeholder="Ej: Aviso importante" maxlength="100" />
+
+      <label for="inp-msg">Mensaje</label>
+      <textarea id="inp-msg" placeholder="Escribe aquí el mensaje de la alerta..." maxlength="500"></textarea>
+
+      <button class="btn-send" id="btn-send" onclick="sendAlert()">
+        <span id="btn-icon">📤</span>
+        <span id="btn-text">Enviar a todas las tablets</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── HISTORIAL ── -->
+  <div id="history-col">
+    <div class="stats">
+      <div class="stat-box"><div class="num" id="stat-total">–</div><div class="lbl">Total</div></div>
+      <div class="stat-box"><div class="num" id="stat-today">–</div><div class="lbl">Hoy</div></div>
+      <div class="stat-box"><div class="num" id="stat-last">–</div><div class="lbl">Última</div></div>
+    </div>
+
+    <div class="card">
+      <h2>📋 Historial de Alertas <span style="margin-left:auto;font-size:.75rem;color:var(--muted);font-weight:400" id="refresh-label">actualiza cada 5s</span></h2>
+      <div id="alert-list">
+        <div class="empty"><div class="icon">🔍</div>Cargando alertas...</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+  const API = '';   // mismo origen que el backend
+
+  /* ── SEND ── */
+  async function sendAlert() {
+    const title   = document.getElementById('inp-title').value.trim() || 'Alertas Cima';
+    const message = document.getElementById('inp-msg').value.trim();
+    if (!message) { showToast('Escribe un mensaje antes de enviar', 'err'); return; }
+
+    const btn = document.getElementById('btn-send');
+    btn.disabled = true;
+    document.getElementById('btn-icon').textContent = '⏳';
+    document.getElementById('btn-text').textContent  = 'Enviando...';
+
+    try {
+      const now  = new Date();
+      const time = now.toTimeString().slice(0,5);
+      const date = now.toLocaleDateString('es-ES');
+
+      const res  = await fetch(`${API}/alerts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, message, time, date })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error del servidor');
+
+      document.getElementById('inp-msg').value   = '';
+      document.getElementById('inp-title').value = '';
+      showToast('✅ Alerta enviada y guardada correctamente', 'ok');
+      loadAlerts();
+    } catch (e) {
+      showToast('❌ Error: ' + e.message, 'err');
+    } finally {
+      btn.disabled = false;
+      document.getElementById('btn-icon').textContent = '📤';
+      document.getElementById('btn-text').textContent  = 'Enviar a todas las tablets';
+    }
+  }
+
+  /* ── LOAD ── */
+  async function loadAlerts() {
+    try {
+      const res    = await fetch(`${API}/alerts`);
+      const alerts = await res.json();
+
+      // Stats
+      const today = new Date().toLocaleDateString('es-ES');
+      const todayCount = alerts.filter(a => a.date === today).length;
+      document.getElementById('stat-total').textContent = alerts.length;
+      document.getElementById('stat-today').textContent = todayCount;
+      document.getElementById('stat-last').textContent  =
+        alerts.length ? alerts[0].time || '–' : '–';
+
+      const list = document.getElementById('alert-list');
+      if (!alerts.length) {
+        list.innerHTML = '<div class="empty"><div class="icon">📭</div>Sin alertas registradas</div>';
+        return;
+      }
+
+      list.innerHTML = alerts.map(a => `
+        <div class="alert-item">
+          <div class="ah">
+            <span class="title">🔔 ${esc(a.title)}</span>
+            <span class="meta">${esc(a.date || '')} ${esc(a.time || '')}</span>
+          </div>
+          <div class="msg">${esc(a.message)}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('live-status').textContent = 'Conectado';
+      document.getElementById('live-status').style.color = '#a5f3a5';
+    } catch {
+      document.getElementById('live-status').textContent = 'Sin conexión';
+      document.getElementById('live-status').style.color = '#fca5a5';
+    }
+  }
+
+  /* ── TOAST ── */
+  function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = `show ${type}`;
+    setTimeout(() => t.className = '', 3500);
+  }
+
+  /* ── UTILS ── */
+  function esc(str) {
+    return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  /* ── INIT ── */
+  loadAlerts();
+  setInterval(loadAlerts, 5000);   // auto-refresh cada 5 segundos
+
+  // Enviar con Ctrl+Enter en el textarea
+  document.getElementById('inp-msg').addEventListener('keydown', e => {
+    if (e.ctrlKey && e.key === 'Enter') sendAlert();
+  });
+</script>
+</body>
+</html>
