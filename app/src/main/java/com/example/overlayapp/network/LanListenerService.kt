@@ -305,15 +305,6 @@ class LanListenerService : Service() {
                         )
                         // Local Save
                         AppDatabase.getDatabase(this@LanListenerService).alertDao().insertAlert(alertEntity)
-                        
-                        // Central Server Save (Postgres)
-                        try {
-                            ApiClient.service.sendAlert(alertEntity)
-                            Log.d(TAG, "Alerta sincronizada con servidor central")
-                        } catch (e: Exception) {
-                            Log.e(TAG, "Fallo al sincronizar con servidor central (¿Está encendido?)", e)
-                        }
-                        
                         Log.d(TAG, "Alerta guardada en base de datos local")
                     } catch (e: Exception) {
                         Log.e(TAG, "Error guardando en BD", e)
