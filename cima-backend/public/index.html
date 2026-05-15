@@ -210,6 +210,40 @@
     /* ── SCROLL ── */
     #history-col { overflow-y: auto; max-height: 80vh; }
     #alert-list::-webkit-scrollbar { width: 6px; }
+
+    /* ── LOGIN OVERLAY ── */
+    #login-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+    .login-card {
+      width: 100%; max-width: 400px;
+      padding: 40px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .login-card h2 { font-size: 1.5rem; margin-bottom: 30px; }
+    .login-card .logo { font-size: 3rem; margin-bottom: 20px; display: block; }
+
+    #main-content { display: none; } /* oculto por defecto */
+
+    .btn-logout {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: .8rem;
+      cursor: pointer;
+      margin-left: 14px;
+      transition: background .2s;
+    }
+    .btn-logout:hover { background: var(--red); border-color: var(--red); }
   </style>
 </head>
 <body>
@@ -221,9 +255,27 @@
     <span>Sistema centralizado de notificaciones</span>
   </div>
   <div class="live-dot" id="live-status">Conectado</div>
+  <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
 </header>
 
-<div class="container">
+<!-- PANTALLA DE LOGIN -->
+<div id="login-overlay">
+  <div class="login-card">
+    <span class="logo">🔐</span>
+    <h2>Acceso Restringido</h2>
+    
+    <label for="login-user" style="text-align: left;">Usuario</label>
+    <input type="text" id="login-user" placeholder="admin" />
+    
+    <label for="login-pass" style="text-align: left;">Contraseña</label>
+    <input type="password" id="login-pass" placeholder="••••" style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; color: var(--text); outline: none; margin-bottom: 24px;" />
+    
+    <button class="btn-send" onclick="doLogin()">Entrar al Panel</button>
+    <p id="login-err" style="color: var(--red); font-size: .8rem; margin-top: 16px; display: none;"></p>
+  </div>
+</div>
+
+<div class="container" id="main-content">
 
   <!-- ── FORMULARIO ── -->
   <div>
@@ -355,13 +407,62 @@
   }
 
   /* ── INIT ── */
-  loadAlerts();
-  setInterval(loadAlerts, 5000);   // auto-refresh cada 5 segundos
+  checkAuth();
 
   // Enviar con Ctrl+Enter en el textarea
   document.getElementById('inp-msg').addEventListener('keydown', e => {
     if (e.ctrlKey && e.key === 'Enter') sendAlert();
   });
+
+  // Login con Enter
+  document.getElementById('login-pass').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+
+  /* ── AUTH LOGIC ── */
+  function checkAuth() {
+    const token = localStorage.getItem('cima_token');
+    if (token) {
+      document.getElementById('login-overlay').style.display = 'none';
+      document.getElementById('main-content').style.display = 'grid';
+      loadAlerts();
+      setInterval(loadAlerts, 5000);
+    } else {
+      document.getElementById('login-overlay').style.display = 'flex';
+      document.getElementById('main-content').style.display = 'none';
+    }
+  }
+
+  async function doLogin() {
+    const user = document.getElementById('login-user').value;
+    const password = document.getElementById('login-pass').value;
+    const errEl = document.getElementById('login-err');
+
+    try {
+      const res = await fetch(`${API}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user, password })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        localStorage.setItem('cima_token', data.token);
+        checkAuth();
+      } else {
+        errEl.textContent = data.message;
+        errEl.style.display = 'block';
+      }
+    } catch (e) {
+      errEl.textContent = 'Error de conexión con el servidor';
+      errEl.style.display = 'block';
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem('cima_token');
+    location.reload();
+  }
 </script>
 </body>
 </html>

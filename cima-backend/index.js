@@ -42,6 +42,16 @@ app.post('/alerts', async (req, res) => {
   }
 });
 
+// Login sencillo
+app.post('/login', (req, res) => {
+  const { user, password } = req.body;
+  if (user === 'admin' && password === '1234') {
+    res.json({ success: true, token: 'cima-auth-token-123' });
+  } else {
+    res.status(401).json({ success: false, message: 'Usuario o contraseña incorrectos' });
+  }
+});
+
 app.listen(3000, '0.0.0.0', () => {
   console.log('Servidor Cima listo en puerto 3000');
 });
