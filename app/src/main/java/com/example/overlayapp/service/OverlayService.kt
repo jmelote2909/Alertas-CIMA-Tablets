@@ -35,6 +35,7 @@ class OverlayService : Service() {
     private var windowManager: WindowManager? = null
     private var overlayView: View? = null
     private var vibrator: Vibrator? = null
+    private var ringtone: android.media.Ringtone? = null
     private val handler = Handler(Looper.getMainLooper())
     private var isVibrating = false
 
@@ -238,6 +239,7 @@ class OverlayService : Service() {
 
     private fun dismissOverlay() {
         stopVibration()
+        stopSound()
         try {
             overlayView?.let { windowManager?.removeView(it) }
         } catch (_: Exception) {}
@@ -273,14 +275,24 @@ class OverlayService : Service() {
     private fun playAlertSound() {
         try {
             val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-            val ringtone = RingtoneManager.getRingtone(applicationContext, uri)
+            ringtone = RingtoneManager.getRingtone(applicationContext, uri)
             ringtone?.play()
         } catch (_: Exception) {}
+    }
+
+    private fun stopSound() {
+        try {
+            if (ringtone?.isPlaying == true) {
+                ringtone?.stop()
+            }
+        } catch (_: Exception) {}
+        ringtone = null
     }
 
     override fun onDestroy() {
         super.onDestroy()
         stopVibration()
+        stopSound()
         try {
             overlayView?.let { windowManager?.removeView(it) }
         } catch (_: Exception) {}
